@@ -3,8 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssImport = require('postcss-import');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+
 const mode = process.env.NODE_ENV || 'production';
 const isNeedBundleAnalyzer = process.env.BUNDLE_ANALYZER;
+const isProdMode = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode,
@@ -40,15 +46,16 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
           {
-            loader: require.resolve('css-loader'),
+            loader: 'postcss-loader', // postcss loader needed for tailwindcss
             options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: '[name]__[local]___[hash:base64:5]',
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: [postcssImport, tailwindcss(), autoprefixer],
               },
             },
           },
@@ -57,6 +64,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: isProdMode ? '[name].[contenthash].css' : '[name].css',
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

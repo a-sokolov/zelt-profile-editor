@@ -1,0 +1,68 @@
+{
+  "name": "zelt-profile-editor",
+  "version": "1.0.0-alpha",
+  "description": "This is a simple profile editor, allowing users to view and edit their Zelt user profile.",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --port 3000",
+    "build": "cross-env NODE_ENV=production webpack",
+    "bundle:analyze": "cross-env BUNDLE_ANALYZER=true cross-env NODE_ENV=production webpack --progress",
+    "lint:types": "eslint ./ --ext .ts,.tsx",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
+    "test:coverage:unit": "jest --coverage",
+    "precommit": "yarn lint:types && lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-sokolov/zelt-profile-editor.git"
+  },
+  "dependencies": {
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-router-dom": "6.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "@types/jest": "26.0.23",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.3",
+    "@types/react-router-dom": "5.3.3",
+    "@typescript-eslint/eslint-plugin": "4.28.0",
+    "babel-jest": "27.0.6",
+    "copy-webpack-plugin": "9.0.1",
+    "cross-env": "7.0.3",
+    "css-loader": "6.7.1",
+    "eslint": "7.29.0",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jest": "24.3.6",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "html-webpack-plugin": "5.5.0",
+    "husky": "7.0.0",
+    "jest": "27.0.6",
+    "lint-staged": "11.1.2",
+    "prettier": "2.6.2",
+    "style-loader": "3.3.1",
+    "ts-jest": "27.0.3",
+    "ts-loader": "9.3.0",
+    "typescript": "4.6.4",
+    "webpack": "5.72.1",
+    "webpack-bundle-analyzer": "4.4.2",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.0"
+  },
+  "lint-staged": {
+    "*.(ts|tsx)": [
+      "prettier --write",
+      "eslint --fix --quiet",
+      "jest --bail --findRelatedTests"
+    ]
+  },
+  "packageManager": "yarn@3.2.0"
+}

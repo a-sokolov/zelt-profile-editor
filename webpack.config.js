@@ -1,0 +1,76 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const mode = process.env.NODE_ENV || 'production';
+const isNeedBundleAnalyzer = process.env.BUNDLE_ANALYZER;
+
+module.exports = {
+  mode,
+  devtool: 'source-map',
+  entry: './src/index.ts',
+  devServer: {
+    historyApiFallback: true,
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    clean: true,
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
+    alias: {
+      '@src': path.resolve(__dirname, 'src'),
+    },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(woff|woff2|ttf|eot|png|gif)$/,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.md$/,
+        type: 'asset/source',
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/assets',
+          to: 'assets',
+        },
+      ],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './public/index.html',
+      favicon: './public/favicon.ico',
+      title: 'Zelt profile editor',
+    }),
+    ...(isNeedBundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
+  ],
+};

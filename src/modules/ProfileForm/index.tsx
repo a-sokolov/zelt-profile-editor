@@ -1,14 +1,15 @@
 import { FC, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import dayjs from 'dayjs';
-import cn from 'classnames';
 import type { Profile } from '@src/api';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '@src/components/Button';
+import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 import { InputFormControl } from './InputFormControl';
 import { AvatarFormControl } from './AvatarFormControl';
 import { schema } from './schema';
+import { ProfileFormStyled, ButtonsBlockStyled, TextFieldsBlockStyled } from './styles';
 import type { ProfileFormProps, ProfileKeys } from './types';
 
 export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) => {
@@ -38,11 +39,11 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
   const { isValid, isDirty } = formState;
 
   return (
-    <div className={cn('min-w-[300px] max-w-[500px] flex flex-col gap-6', { 'pointer-events-none': saving })}>
+    <ProfileFormStyled $disabled={saving}>
       <FormProvider {...methods}>
         <AvatarFormControl name="profilePictureURL" />
 
-        <div className="flex flex-col gap-2">
+        <TextFieldsBlockStyled>
           <InputFormControl name="firstName" label="First name" placeholder="John" />
 
           <InputFormControl name="lastName" label="Last name" placeholder="Wick" />
@@ -53,19 +54,24 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
 
           <InputFormControl name="email" label="E-mail" placeholder="name@domen.com" />
 
-          <InputFormControl name="salary" label="Salary" readonly />
-        </div>
+          <InputFormControl name="salary" label="Salary" disabled />
+        </TextFieldsBlockStyled>
 
-        <div className="flex gap-2">
-          <Button onClick={handleSubmit(onSubmit)} loading={saving} disabled={!isDirty || !isValid}>
+        <ButtonsBlockStyled>
+          <LoadingButton
+            variant="contained"
+            onClick={handleSubmit(onSubmit)}
+            loading={saving}
+            disabled={!isDirty || !isValid}
+          >
             Save profile
-          </Button>
+          </LoadingButton>
 
-          <Button appearance="secondary" onClick={handleCancel} disabled={!isDirty || saving}>
+          <Button variant="outlined" onClick={handleCancel} disabled={!isDirty || saving}>
             Cancel
           </Button>
-        </div>
+        </ButtonsBlockStyled>
       </FormProvider>
-    </div>
+    </ProfileFormStyled>
   );
 };

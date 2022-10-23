@@ -1,16 +1,31 @@
 import React, { FC } from 'react';
-import { Button } from '@src/components/Button';
-import { Input } from '@src/components/Input';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 import type { LoginPageProps } from './types';
+import { LoginPageStyle } from './styles';
 
 export const LoginPage: FC<LoginPageProps> = ({ onLogin }) => (
-  <div className="w-[20rem] h-[15rem] flex flex-col justify-center border gap-2.5 rounded shadow-md p-5">
-    <h1 className="text-xl font-bold">Log In</h1>
+  <LoginPageStyle>
+    <Typography variant="h4">Log In</Typography>
 
-    <Input readonly placeholder="Your name or email" value="dua.clipa@zelt.com" />
-    <Input readonly type="password" placeholder="Your password" value="qwerty" />
+    <TextField
+      size="small"
+      inputProps={{ readOnly: true }}
+      placeholder="Your name or email"
+      value="dua.clipa@zelt.com"
+    />
+    <TextField
+      size="small"
+      inputProps={{ readOnly: true }}
+      type="password"
+      placeholder="Your password"
+      value="qwerty"
+    />
 
-    <Button onClick={onLogin}>Log in</Button>
-  </div>
+    <Button variant="contained" onClick={onLogin}>
+      Log in
+    </Button>
+  </LoginPageStyle>
 );

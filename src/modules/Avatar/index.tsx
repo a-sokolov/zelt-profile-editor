@@ -1,23 +1,23 @@
 import { FC } from 'react';
-import { Button } from '@src/components/Button';
+import MuiAvatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 
+import { AVATAR_SIZE } from './constants';
+import { AvatarStyled, ButtonBlockStyled } from './styles';
 import type { AvatarProps } from './types';
 
 export const Avatar: FC<AvatarProps> = ({ url, onChange, onDelete }) => (
-  <div className="w-[250px] flex flex-row gap-6 items-center">
-    <div className="w-[120px] h-[120px] rounded-full flex justify-center items-center bg-gray-200 overflow-hidden">
-      {url && <img alt="avatar" src={url} />}
-      {!url && <p>No avatar</p>}
-    </div>
+  <AvatarStyled>
+    <MuiAvatar sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE }} alt="avatar" src={url ?? ''} />
 
-    <div className="flex flex-col gap-2">
-      <Button onClick={onChange} width="full">
+    <ButtonBlockStyled>
+      <Button variant="contained" onClick={onChange}>
         Change
       </Button>
 
-      <Button appearance="secondary" onClick={onDelete} width="full">
+      <Button variant="outlined" onClick={onDelete}>
         Delete
       </Button>
-    </div>
-  </div>
+    </ButtonBlockStyled>
+  </AvatarStyled>
 );

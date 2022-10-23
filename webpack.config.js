@@ -4,9 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const postcssImport = require('postcss-import');
-const tailwindcss = require('tailwindcss');
-const autoprefixer = require('autoprefixer');
 
 const mode = process.env.NODE_ENV || 'production';
 const isNeedBundleAnalyzer = process.env.BUNDLE_ANALYZER;
@@ -46,21 +43,9 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader', // postcss loader needed for tailwindcss
-            options: {
-              postcssOptions: {
-                ident: 'postcss',
-                plugins: [postcssImport, tailwindcss(), autoprefixer],
-              },
-            },
-          },
-        ],
-      },
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      }
     ],
   },
   plugins: [

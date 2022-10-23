@@ -1,8 +1,10 @@
-import type { InputProps } from '@src/components/Input';
+import type { HTMLInputTypeAttribute } from 'react';
 
 import type { FormControlProps } from '../types';
 
-export type InputFromControlProps = FormControlProps &
-  Omit<InputProps, 'name'> & {
-    label: string;
-  };
+export type InputFromControlProps = FormControlProps & {
+  label: string;
+  placeholder?: string;
+  disabled?: boolean;
+  type?: HTMLInputTypeAttribute;
+};

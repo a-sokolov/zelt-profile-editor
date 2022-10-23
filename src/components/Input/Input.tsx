@@ -9,6 +9,7 @@ export const Input: FC<InputProps> = ({
   readonly = false,
   type = 'text',
   error = false,
+  name,
   onChange,
 }) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +20,9 @@ export const Input: FC<InputProps> = ({
     <input
       readOnly={readonly}
       type={type}
+      name={name}
       placeholder={placeholder}
-      className={cn('border rounded px-2 py-1 bg-', { 'bg-red-100': error }, { 'text-gray-500': readonly })}
+      className={cn('border rounded px-2 py-1', { 'bg-red-100': error }, { 'text-gray-500 bg-gray-200': readonly })}
       value={value}
       onChange={handleChange}
     />

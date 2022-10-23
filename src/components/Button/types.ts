@@ -5,4 +5,5 @@ export type ButtonProps = {
   appearance?: ButtonAppearance;
   width?: 'full' | 'max';
   loading?: boolean;
+  disabled?: boolean;
 };

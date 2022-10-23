@@ -9,11 +9,9 @@ import './styles.css';
 export const App: FC = () => (
   <React.StrictMode>
     <BrowserRouter>
-      <div className="flex flex-col h-screen w-screen justify-center items-center">
-        <Provider>
-          <Routes />
-        </Provider>
-      </div>
+      <Provider>
+        <Routes />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

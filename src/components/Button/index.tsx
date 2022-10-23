@@ -11,6 +11,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
   appearance = 'primary',
   width = 'max',
   loading = false,
+  disabled = false,
   children,
 }) => (
   <button
@@ -18,12 +19,17 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({
     className={cn(
       'relative border px-4 py-2 rounded',
       width === 'max' ? 'w-max' : 'w-full',
-      APPEARANCE_COLORS[appearance],
+      { 'bg-gray-300': disabled },
+      !disabled && APPEARANCE_COLORS[appearance],
       {
-        'button--loading cursor-default text-transparent': loading,
+        'cursor-default': loading || disabled,
+      },
+      {
+        'button--loading text-transparent': loading,
       },
     )}
-    onClick={loading ? undefined : onClick}
+    disabled={disabled}
+    onClick={loading || disabled ? undefined : onClick}
   >
     {children}
   </button>

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, Suspense } from 'react';
-import { LoginForm } from '@src/modules/LoginForm';
+import { LoginPage } from '@src/pages/LoginPage';
 import { Layout } from '@src/modules/Layout';
 
 import { useSession } from './hooks/useSession';
@@ -15,5 +15,5 @@ export const Provider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     );
   }
 
-  return <LoginForm onLogin={login} />;
+  return <LoginPage onLogin={login} />;
 };

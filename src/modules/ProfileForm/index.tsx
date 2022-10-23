@@ -1,19 +1,19 @@
 import { FC, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import dayjs from 'dayjs';
 import cn from 'classnames';
 import type { Profile } from '@src/api';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@src/components/Button';
-import dayjs from 'dayjs';
 
 import { InputFormControl } from './InputFormControl';
 import { AvatarFormControl } from './AvatarFormControl';
 import { schema } from './schema';
-import type { ProfileFormProps } from './types';
+import type { ProfileFormProps, ProfileKeys } from './types';
 
 export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) => {
   const [saving, setSaving] = useState(false);
-  const methods = useForm<Profile, keyof Profile>({
+  const methods = useForm<Profile, ProfileKeys>({
     mode: 'onChange',
     defaultValues: profile,
     resolver: yupResolver(schema),
@@ -35,10 +35,12 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
     reset();
   };
 
+  const { isValid, isDirty } = formState;
+
   return (
     <div className={cn('min-w-[300px] max-w-[500px] flex flex-col gap-6', { 'pointer-events-none': saving })}>
       <FormProvider {...methods}>
-        <AvatarFormControl />
+        <AvatarFormControl name="profilePictureURL" />
 
         <div className="flex flex-col gap-2">
           <InputFormControl name="firstName" label="First name" placeholder="John" />
@@ -55,11 +57,11 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
         </div>
 
         <div className="flex gap-2">
-          <Button onClick={handleSubmit(onSubmit)} loading={saving} disabled={!formState.isDirty || !formState.isValid}>
+          <Button onClick={handleSubmit(onSubmit)} loading={saving} disabled={!isDirty || !isValid}>
             Save profile
           </Button>
 
-          <Button appearance="secondary" onClick={handleCancel} disabled={!formState.isDirty || saving}>
+          <Button appearance="secondary" onClick={handleCancel} disabled={!isDirty || saving}>
             Cancel
           </Button>
         </div>

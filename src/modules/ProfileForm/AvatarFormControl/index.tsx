@@ -3,24 +3,25 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Avatar } from '@src/modules/Avatar';
 import { DEFAULT_PROFILE_PICTURE_URL } from '@src/api';
 
-export const AvatarFormControl: FC = () => {
+import type { FormControlProps } from '../types';
+
+export const AvatarFormControl: FC<FormControlProps> = ({ name }) => {
   const { control } = useFormContext();
 
   return (
     <Controller
       control={control}
-      name="profilePictureURL"
-      rules={{ required: false }}
-      render={({ field }) => {
+      name={name}
+      render={({ field: { onChange, value } }) => {
         const handleChange = () => {
-          field.onChange(DEFAULT_PROFILE_PICTURE_URL);
+          onChange(DEFAULT_PROFILE_PICTURE_URL);
         };
 
         const handleDelete = () => {
-          field.onChange(null);
+          onChange(null);
         };
 
-        return <Avatar url={field.value} onChange={handleChange} onDelete={handleDelete} />;
+        return <Avatar url={value} onChange={handleChange} onDelete={handleDelete} />;
       }}
     />
   );

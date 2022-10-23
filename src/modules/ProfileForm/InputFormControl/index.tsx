@@ -5,17 +5,16 @@ import { FormLabel } from '@src/components/FormLabel';
 
 import type { InputFromControlProps } from './types';
 
-export const InputFormControl: FC<InputFromControlProps> = ({ name, label, required = false, ...rest }) => {
+export const InputFormControl: FC<InputFromControlProps> = ({ name, label, ...rest }) => {
   const { control } = useFormContext();
 
   return (
     <Controller
       control={control}
       name={name}
-      rules={{ required }}
-      render={({ field, fieldState }) => (
-        <FormLabel name={field.name} label={label}>
-          <Input {...rest} name={field.name} value={field.value} onChange={field.onChange} error={!!fieldState.error} />
+      render={({ field: { value, onChange }, fieldState: { error } }) => (
+        <FormLabel name={name} label={label}>
+          <Input {...rest} name={name} value={value} onChange={onChange} error={!!error} />
         </FormLabel>
       )}
     />

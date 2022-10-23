@@ -1,22 +1,32 @@
 import { FC, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import cn from 'classnames';
 import type { Profile } from '@src/api';
 import { Button } from '@src/components/Button';
+import dayjs from 'dayjs';
 
 import { InputFormControl } from './InputFormControl';
 import { AvatarFormControl } from './AvatarFormControl';
+import { schema } from './schema';
 import type { ProfileFormProps } from './types';
 
 export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) => {
   const [saving, setSaving] = useState(false);
-  const methods = useForm<Profile, keyof Profile>({ defaultValues: profile });
+  const methods = useForm<Profile, keyof Profile>({
+    mode: 'onChange',
+    defaultValues: profile,
+    resolver: yupResolver(schema),
+  });
   const { handleSubmit, formState, reset } = methods;
 
   const onSubmit = (data: Profile) => {
     setSaving(true);
-    onUpdateProfile(data).then(() => {
-      reset(data);
+
+    const modifiedData: Profile = { ...data, dateOfBirth: dayjs(data.dateOfBirth).format('YYYY-MM-DD') };
+
+    onUpdateProfile(modifiedData).then(() => {
+      reset(modifiedData);
       setSaving(false);
     });
   };
@@ -25,34 +35,27 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
     reset();
   };
 
-  // pattern="((\+|00)?[1-9]{2}|0)[1-9]([0-9]){8}"
-  // pattern="(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}"
-
   return (
-    <div
-      style={{ minWidth: '300px', maxWidth: '500px' }}
-      className={cn('flex flex-col gap-6', { 'pointer-events-none': saving })}
-    >
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+    <div className={cn('min-w-[300px] max-w-[500px] flex flex-col gap-6', { 'pointer-events-none': saving })}>
       <FormProvider {...methods}>
         <AvatarFormControl />
 
         <div className="flex flex-col gap-2">
-          <InputFormControl required name="firstName" label="First name" placeholder="John" />
+          <InputFormControl name="firstName" label="First name" placeholder="John" />
 
-          <InputFormControl required name="lastName" label="Last name" placeholder="Wick" />
+          <InputFormControl name="lastName" label="Last name" placeholder="Wick" />
 
-          <InputFormControl required name="dateOfBirth" label="Date of birth" type="date" />
+          <InputFormControl name="dateOfBirth" label="Date of birth" type="date" />
 
-          <InputFormControl name="phone" label="Phone number" placeholder="89991234567" type="tel" />
+          <InputFormControl name="phone" label="Phone number" placeholder="89991234567" />
 
-          <InputFormControl name="email" label="E-mail" placeholder="name@domen.com" type="email" />
+          <InputFormControl name="email" label="E-mail" placeholder="name@domen.com" />
 
           <InputFormControl name="salary" label="Salary" readonly />
         </div>
 
         <div className="flex gap-2">
-          <Button onClick={handleSubmit(onSubmit)} loading={saving} disabled={!formState.isDirty}>
+          <Button onClick={handleSubmit(onSubmit)} loading={saving} disabled={!formState.isDirty || !formState.isValid}>
             Save profile
           </Button>
 

@@ -15,7 +15,6 @@ export const InputFormControl: FC<InputFromControlProps> = ({ name, label, requi
       rules={{ required }}
       render={({ field, fieldState }) => (
         <FormLabel name={field.name} label={label}>
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Input {...rest} name={field.name} value={field.value} onChange={field.onChange} error={!!fieldState.error} />
         </FormLabel>
       )}

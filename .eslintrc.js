@@ -27,6 +27,7 @@ module.exports = {
   },
   plugins: ['react', 'jsx-a11y', '@typescript-eslint', 'import', 'prettier', 'react-hooks', 'jest'],
   rules: {
+    'react/jsx-props-no-spreading': 'off',
     'jest/no-mocks-import': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',

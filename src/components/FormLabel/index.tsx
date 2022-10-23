@@ -7,6 +7,7 @@ export const FormLabel: FC<PropsWithChildren<FormLabelProps>> = ({ name, label, 
     <label htmlFor={name} className="text-gray-500 text-xs">
       {label}
     </label>
+
     {children}
   </div>
 );

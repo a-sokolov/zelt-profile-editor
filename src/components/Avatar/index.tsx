@@ -15,7 +15,7 @@ export const Avatar: FC<AvatarProps> = ({ url, onChange, onDelete }) => (
         Change
       </Button>
 
-      <Button variant="outlined" onClick={onDelete}>
+      <Button variant="outlined" onClick={onDelete} disabled={!url}>
         Delete
       </Button>
     </ButtonBlockStyled>

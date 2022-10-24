@@ -5,12 +5,18 @@ import Typography from '@mui/material/Typography';
 
 const ProfilePage = lazy(() => import('@src/pages/ProfilePage'));
 
+type PageStubProps = {
+  title: string;
+};
+
+const PageStub: FC<PageStubProps> = ({ title }) => <Typography>{title}</Typography>;
+
 export const Routes: FC = () => (
   <Router>
-    <Route caseSensitive path={AppRoutes.Dashboard} element={<Typography>Dashboard</Typography>} />
-    <Route caseSensitive path={AppRoutes.Favourites} element={<Typography>Favourites</Typography>} />
-    <Route caseSensitive path={AppRoutes.Settings} element={<Typography>Settings</Typography>} />
-    <Route caseSensitive path={AppRoutes.Notification} element={<Typography>Notification</Typography>} />
+    <Route caseSensitive path={AppRoutes.Dashboard} element={<PageStub title="Dashboard" />} />
+    <Route caseSensitive path={AppRoutes.Favourites} element={<PageStub title="Favourites" />} />
+    <Route caseSensitive path={AppRoutes.Settings} element={<PageStub title="Settings" />} />
+    <Route caseSensitive path={AppRoutes.Notification} element={<PageStub title="Notification" />} />
     <Route caseSensitive path={AppRoutes.Profile} element={<ProfilePage />} />
 
     <Route path="/" element={<Navigate to={AppRoutes.Profile} />} />

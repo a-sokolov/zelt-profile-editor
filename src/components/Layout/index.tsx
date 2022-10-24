@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Aside } from '@src/modules/Aside';
-import { Header } from '@src/modules/Header';
+import { Aside } from '@src/components/Aside';
+import { Header } from '@src/components/Header';
 
 import { ASIDE_ITEMS } from './constants';
 import { LayoutStyled, ContentStyled } from './styles';

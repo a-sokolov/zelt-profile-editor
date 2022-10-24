@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { Avatar } from '@src/modules/Avatar';
+import { Avatar } from '@src/components/Avatar';
 import { DEFAULT_PROFILE_PICTURE_URL } from '@src/api';
 
 import type { FormControlProps } from '../types';

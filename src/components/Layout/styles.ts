@@ -19,7 +19,7 @@ export const LayoutStyled = styled.div`
   }
 `;
 
-export const ContentStyled = styled.div`
+export const ContentStyled = styled.section`
   grid-area: content;
   padding: 1rem 2rem;
   overflow: auto;

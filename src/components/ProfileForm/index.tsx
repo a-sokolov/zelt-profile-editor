@@ -13,7 +13,7 @@ import { ProfileFormStyled, ButtonsBlockStyled, TextFieldsBlockStyled } from './
 import type { ProfileFormProps, ProfileKeys } from './types';
 
 export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) => {
-  const [saving, setSaving] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const methods = useForm<Profile, ProfileKeys>({
     mode: 'onChange',
     defaultValues: profile,
@@ -22,13 +22,13 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
   const { handleSubmit, formState, reset } = methods;
 
   const onSubmit = (data: Profile) => {
-    setSaving(true);
+    setIsSaving(true);
 
     const modifiedData: Profile = { ...data, dateOfBirth: dayjs(data.dateOfBirth).format('YYYY-MM-DD') };
 
     onUpdateProfile(modifiedData).then(() => {
       reset(modifiedData);
-      setSaving(false);
+      setIsSaving(false);
     });
   };
 
@@ -39,7 +39,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
   const { isValid, isDirty } = formState;
 
   return (
-    <ProfileFormStyled $disabled={saving}>
+    <ProfileFormStyled $disabled={isSaving}>
       <FormProvider {...methods}>
         <AvatarFormControl name="profilePictureURL" />
 
@@ -61,13 +61,13 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
           <LoadingButton
             variant="contained"
             onClick={handleSubmit(onSubmit)}
-            loading={saving}
+            loading={isSaving}
             disabled={!isDirty || !isValid}
           >
             Save profile
           </LoadingButton>
 
-          <Button variant="outlined" onClick={handleCancel} disabled={!isDirty || saving}>
+          <Button variant="outlined" onClick={handleCancel} disabled={!isDirty || isSaving}>
             Cancel
           </Button>
         </ButtonsBlockStyled>

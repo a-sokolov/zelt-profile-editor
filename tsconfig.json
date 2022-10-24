@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "utils",
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "dist",

@@ -2,21 +2,21 @@ import { useCallback, useEffect, useState } from 'react';
 import { ApiResult, getUserProfile, Profile, setUserProfile } from '@src/api';
 
 type UseUserProfileResult = {
-  loading: boolean;
+  isLoading: boolean;
   profile?: Profile;
   updateProfile: (profile: Profile) => Promise<void>;
 };
 
 export const useUserProfile = (): UseUserProfileResult => {
   const [profile, setProfile] = useState<Profile>();
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getProfileData = useCallback(() => {
-    setLoading(true);
+    setIsLoading(true);
 
     getUserProfile().then((data) => {
       setProfile(data);
-      setLoading(false);
+      setIsLoading(false);
     });
   }, []);
 
@@ -25,6 +25,8 @@ export const useUserProfile = (): UseUserProfileResult => {
     if (result === ApiResult.Failure) {
       throw new Error('Something went wrong!');
     }
+
+    setProfile(payload);
   }, []);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export const useUserProfile = (): UseUserProfileResult => {
   }, [getProfileData]);
 
   return {
-    loading,
+    isLoading,
     profile,
     updateProfile,
   };

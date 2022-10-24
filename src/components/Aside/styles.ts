@@ -7,7 +7,7 @@ export const AsideStyled = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid #d3d3d3;
+  background-color: #d3d3d3;
 
   @media (max-width: 600px) {
     display: none !important;

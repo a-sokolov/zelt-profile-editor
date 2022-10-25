@@ -39,7 +39,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
   const { isValid, isDirty } = formState;
 
   return (
-    <ProfileFormStyled $disabled={isSaving}>
+    <ProfileFormStyled $disabled={isSaving} onSubmit={handleSubmit(onSubmit)}>
       <FormProvider {...methods}>
         <AvatarFormControl name="profilePictureURL" />
 
@@ -58,12 +58,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({ profile, onUpdateProfile }) 
         </TextFieldsBlockStyled>
 
         <ButtonsBlockStyled>
-          <LoadingButton
-            variant="contained"
-            onClick={handleSubmit(onSubmit)}
-            loading={isSaving}
-            disabled={!isDirty || !isValid}
-          >
+          <LoadingButton type="submit" variant="contained" loading={isSaving} disabled={!isDirty || !isValid}>
             Save profile
           </LoadingButton>
 

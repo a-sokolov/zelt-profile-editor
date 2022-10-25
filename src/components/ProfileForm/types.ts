@@ -10,3 +10,7 @@ export type ProfileFormProps = {
 export type FormControlProps = {
   name: ProfileKeys;
 };
+
+export type ProfileFormStyle = {
+  $disabled: boolean;
+};

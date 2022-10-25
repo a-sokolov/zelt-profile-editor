@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const ProfileFormStyled = styled.div<{ $disabled: boolean }>`
+import type { ProfileFormStyle } from './types';
+
+export const ProfileFormStyled = styled.form<ProfileFormStyle>`
   min-width: 300px;
   max-width: 500px;
   display: flex;

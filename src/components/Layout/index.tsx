@@ -6,7 +6,7 @@ import { Header } from '@src/components/Header';
 import { ASIDE_ITEMS } from './constants';
 import { LayoutStyled, ContentStyled } from './styles';
 
-export const Layout: FC<PropsWithChildren<null>> = ({ children }) => {
+export const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const { pathname } = useLocation();
 
   return (

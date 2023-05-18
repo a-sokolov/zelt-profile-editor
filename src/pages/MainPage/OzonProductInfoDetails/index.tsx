@@ -15,7 +15,7 @@ export const OzonProductInfoDetails: FC<OzonProductInfoDetailsProps> = ({ produc
   <Card variant="outlined" sx={{ display: 'flex', gap: '16px', width: '100%', padding: '8px', borderRadius: '8px' }}>
     <Image360
       cover={product.primary_image}
-      image360={product.images360}
+      images360={product.images360}
       images={product.images}
       alt={product.barcode}
     />

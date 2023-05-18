@@ -6,14 +6,14 @@ import Button from '@mui/material/Button';
 interface Image360Props {
   cover: string;
 
-  image360: string[];
+  images360: string[];
 
   images: string[];
 
   alt: string;
 }
 
-export const Image360: FC<Image360Props> = ({ cover, image360, images, alt }) => {
+export const Image360: FC<Image360Props> = ({ cover, images360, images, alt }) => {
   const [show, setShow] = useState(false);
   const [index, setIndex] = useState(0);
   const [show360, setShow360] = useState(false);
@@ -48,7 +48,7 @@ export const Image360: FC<Image360Props> = ({ cover, image360, images, alt }) =>
       <Box sx={{ position: 'relative' }}>
         <img width="200px" src={cover} alt={alt} />
 
-        {image360.length > 0 && (
+        {images360.length > 0 && (
           <Button
             variant="contained"
             color="success"
@@ -75,9 +75,9 @@ export const Image360: FC<Image360Props> = ({ cover, image360, images, alt }) =>
         <DialogTitle>360 preview</DialogTitle>
 
         <DialogContent>
-          <img width="200px" src={image360[index360]} alt={alt} />
+          <img width="200px" src={images360[index360]} alt={alt} />
 
-          <Slider value={index360} onChange={handleChange360} max={image360.length - 1} />
+          <Slider value={index360} onChange={handleChange360} max={images360.length - 1} />
         </DialogContent>
       </Dialog>
 

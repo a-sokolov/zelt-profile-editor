@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-echo "zelt-profile-edit: CommitMsg Hook Started"
+echo "ampika-dev: CommitMsg Hook Started"
 yarn commitlint --edit $1

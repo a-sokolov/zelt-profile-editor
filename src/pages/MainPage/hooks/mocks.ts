@@ -1,5 +1,6 @@
 import type { OzonProductInfo } from '@src/api/ozon';
 
+// @ts-ignore
 export const ozonProductInfoMock: OzonProductInfo = {
   id: 76122452,
   name: 'Насос дренажный погружной Ампика CSP-255P  для откачки загрязненной воды из подвала, колодца, септика со встроенным поплавком',
@@ -139,4 +140,4 @@ export const ozonProductInfoMock: OzonProductInfo = {
       price_index_value: 0.99,
     },
   },
-};
+} as const;

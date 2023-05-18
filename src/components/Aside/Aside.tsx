@@ -3,9 +3,9 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 
 import type { AsideProps } from './types';
-import { AsideStyled, LinkStyled, LogoutButtonStyled } from './styles';
+import { AsideStyled, LinkStyled } from './styles';
 
-export const Aside: FC<AsideProps> = ({ items, onLogout, currentItemUrl }) => (
+export const Aside: FC<AsideProps> = ({ items, currentItemUrl }) => (
   <AsideStyled>
     <nav>
       <MenuList>
@@ -16,9 +16,5 @@ export const Aside: FC<AsideProps> = ({ items, onLogout, currentItemUrl }) => (
         ))}
       </MenuList>
     </nav>
-
-    <LogoutButtonStyled variant="outlined" onClick={onLogout}>
-      Log out
-    </LogoutButtonStyled>
   </AsideStyled>
 );

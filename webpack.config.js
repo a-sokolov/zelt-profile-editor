@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -52,19 +52,19 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isProdMode ? '[name].[contenthash].css' : '[name].css',
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: './src/assets',
-          to: 'assets',
-        },
-      ],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: './src/assets',
+    //       to: 'assets',
+    //     },
+    //   ],
+    // }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './public/index.html',
       favicon: './public/favicon.ico',
-      title: 'Zelt profile editor',
+      title: 'The Ampika application',
     }),
     ...(isNeedBundleAnalyzer ? [new BundleAnalyzerPlugin()] : []),
   ],

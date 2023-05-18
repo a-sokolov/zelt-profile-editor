@@ -1,7 +1,7 @@
 {
-  "name": "zelt-profile-editor",
+  "name": "ampika-dev",
   "version": "1.0.0",
-  "description": "This is a simple profile editor, allowing users to view and edit their Zelt user profile.",
+  "description": "The Ampika application",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --port 3000 --open",
@@ -27,6 +27,7 @@
     "@mui/material": "5.10.10",
     "@mui/styled-engine-sc": "5.10.6",
     "dayjs": "1.11.6",
+    "ky": "^0.33.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "7.38.0",
@@ -78,5 +79,9 @@
       "jest --bail --findRelatedTests"
     ]
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "engines": {
+    "yarn": "3.2.0",
+    "node": "16.13.1"
+  }
 }

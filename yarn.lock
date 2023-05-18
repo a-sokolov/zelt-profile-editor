@@ -2466,6 +2466,64 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ampika-dev@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "ampika-dev@workspace:."
+  dependencies:
+    "@commitlint/cli": 13.1.0
+    "@commitlint/config-conventional": 13.1.0
+    "@emotion/react": 11.10.4
+    "@emotion/styled": 11.10.4
+    "@fontsource/roboto": 4.5.8
+    "@hookform/resolvers": 2.9.10
+    "@mui/icons-material": 5.10.9
+    "@mui/lab": 5.0.0-alpha.104
+    "@mui/material": 5.10.10
+    "@mui/styled-engine-sc": 5.10.6
+    "@types/jest": 26.0.23
+    "@types/react": 18.0.9
+    "@types/react-dom": 18.0.3
+    "@types/react-router-dom": 5.3.3
+    "@types/styled-components": 5.1.26
+    "@typescript-eslint/eslint-plugin": 4.28.0
+    babel-jest: 27.0.6
+    copy-webpack-plugin: 9.0.1
+    cross-env: 7.0.3
+    css-loader: 5.2.6
+    dayjs: 1.11.6
+    eslint: 7.29.0
+    eslint-config-airbnb-typescript: 12.3.1
+    eslint-config-prettier: 8.3.0
+    eslint-plugin-import: 2.23.4
+    eslint-plugin-jest: 24.3.6
+    eslint-plugin-jsx-a11y: 6.4.1
+    eslint-plugin-prettier: 3.4.0
+    eslint-plugin-react: 7.24.0
+    eslint-plugin-react-hooks: 4.2.0
+    html-webpack-plugin: 5.5.0
+    husky: 7.0.0
+    jest: 27.0.6
+    ky: ^0.33.3
+    lint-staged: 11.1.2
+    mini-css-extract-plugin: 1.6.0
+    prettier: 2.6.2
+    react: 18.1.0
+    react-dom: 18.1.0
+    react-hook-form: 7.38.0
+    react-router-dom: 6.3.0
+    style-loader: 3.3.1
+    styled-components: 5.3.6
+    ts-jest: 27.0.3
+    ts-loader: 9.3.0
+    typescript: 4.6.4
+    webpack: 5.72.1
+    webpack-bundle-analyzer: 4.4.2
+    webpack-cli: 4.10.0
+    webpack-dev-server: 4.9.0
+    yup: 0.32.11
+  languageName: unknown
+  linkType: soft
+
 "ansi-colors@npm:^4.1.1":
   version: 4.1.3
   resolution: "ansi-colors@npm:4.1.3"
@@ -6585,6 +6643,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ky@npm:^0.33.3":
+  version: 0.33.3
+  resolution: "ky@npm:0.33.3"
+  checksum: d1869e1f33c0165355f621b6726fcc1a9de20a31f4a826ca0cfd5753d83b9cba8723402d554a00194e0ee3959e0dda0638f4b99d54a3a7de928b55ff870b0bcc
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:~0.3.2":
   version: 0.3.22
   resolution: "language-subtag-registry@npm:0.3.22"
@@ -10274,60 +10339,3 @@ __metadata:
   checksum: 43a16786b47cc910fed4891cebdd89df6d6e31702e9462e8f969c73eac88551ce750732608012201ea6b93802c8847cb0aa27b5d57370640f4ecf30f9f97d4b0
   languageName: node
   linkType: hard
-
-"zelt-profile-editor@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "zelt-profile-editor@workspace:."
-  dependencies:
-    "@commitlint/cli": 13.1.0
-    "@commitlint/config-conventional": 13.1.0
-    "@emotion/react": 11.10.4
-    "@emotion/styled": 11.10.4
-    "@fontsource/roboto": 4.5.8
-    "@hookform/resolvers": 2.9.10
-    "@mui/icons-material": 5.10.9
-    "@mui/lab": 5.0.0-alpha.104
-    "@mui/material": 5.10.10
-    "@mui/styled-engine-sc": 5.10.6
-    "@types/jest": 26.0.23
-    "@types/react": 18.0.9
-    "@types/react-dom": 18.0.3
-    "@types/react-router-dom": 5.3.3
-    "@types/styled-components": 5.1.26
-    "@typescript-eslint/eslint-plugin": 4.28.0
-    babel-jest: 27.0.6
-    copy-webpack-plugin: 9.0.1
-    cross-env: 7.0.3
-    css-loader: 5.2.6
-    dayjs: 1.11.6
-    eslint: 7.29.0
-    eslint-config-airbnb-typescript: 12.3.1
-    eslint-config-prettier: 8.3.0
-    eslint-plugin-import: 2.23.4
-    eslint-plugin-jest: 24.3.6
-    eslint-plugin-jsx-a11y: 6.4.1
-    eslint-plugin-prettier: 3.4.0
-    eslint-plugin-react: 7.24.0
-    eslint-plugin-react-hooks: 4.2.0
-    html-webpack-plugin: 5.5.0
-    husky: 7.0.0
-    jest: 27.0.6
-    lint-staged: 11.1.2
-    mini-css-extract-plugin: 1.6.0
-    prettier: 2.6.2
-    react: 18.1.0
-    react-dom: 18.1.0
-    react-hook-form: 7.38.0
-    react-router-dom: 6.3.0
-    style-loader: 3.3.1
-    styled-components: 5.3.6
-    ts-jest: 27.0.3
-    ts-loader: 9.3.0
-    typescript: 4.6.4
-    webpack: 5.72.1
-    webpack-bundle-analyzer: 4.4.2
-    webpack-cli: 4.10.0
-    webpack-dev-server: 4.9.0
-    yup: 0.32.11
-  languageName: unknown
-  linkType: soft

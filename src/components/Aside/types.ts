@@ -4,7 +4,6 @@ export type AsideItem = {
 };
 
 export type AsideProps = {
-  onLogout: () => void;
   items: AsideItem[];
   currentItemUrl?: string;
 };

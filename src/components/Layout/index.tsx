@@ -5,14 +5,13 @@ import { Header } from '@src/components/Header';
 
 import { ASIDE_ITEMS } from './constants';
 import { LayoutStyled, ContentStyled } from './styles';
-import type { LayoutProps } from './types';
 
-export const Layout: FC<PropsWithChildren<LayoutProps>> = ({ onLogout, children }) => {
+export const Layout: FC<PropsWithChildren<null>> = ({ children }) => {
   const { pathname } = useLocation();
 
   return (
     <LayoutStyled>
-      <Aside items={ASIDE_ITEMS} onLogout={onLogout} currentItemUrl={pathname} />
+      <Aside items={ASIDE_ITEMS} currentItemUrl={pathname} />
 
       <Header title={pathname.slice(1).toUpperCase()} />
 
